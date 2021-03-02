@@ -1,6 +1,21 @@
 <template>
   <div class="app">
     <div class="container">
+      <nav class="app__navigation navigation">
+        <ul class="navigation__list">
+          <li class="navigation__li">
+            <NuxtLink to="/">Главная /</NuxtLink>
+          </li>
+          <li class="navigation__li">
+            <NuxtLink to="/storage-systems">Системы хранения /</NuxtLink>
+          </li>
+          <li class="navigation__li">
+            <NuxtLink to="/storage-systems/shelving-systems-kits"
+              >Комплекты стеллажных систем
+            </NuxtLink>
+          </li>
+        </ul>
+      </nav>
       <Nuxt />
     </div>
   </div>
@@ -9,30 +24,44 @@
 <script>
 export default {
   mounted() {
-    if (localStorage.getItem('items')) {
-      this.$store.commit('dataFromLocalStorage')
-    };
-  }
-} 
+    if (localStorage.getItem("items")) {
+      this.$store.commit("dataFromLocalStorage");
+    }
+  },
+};
 </script>
 
 <style lang="scss">
-*{
+* {
   padding: 0;
   margin: 0;
   border: 0;
 }
-*,*:before,*:after{
+*,
+*:before,
+*:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-:focus,:active{outline: none;}
-a:focus,a:active{outline: none;}
+:focus,
+:active {
+  outline: none;
+}
+a:focus,
+a:active {
+  outline: none;
+}
 
-nav,footer,header,aside{display: block;}
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
 
-html,body{
+html,
+body {
   height: 100%;
   width: 100%;
   font-size: 100%;
@@ -41,17 +70,47 @@ html,body{
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
-input,button,textarea{font-family:inherit;font-size: inherit;}
+input,
+button,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
 
-input::-ms-clear{display: none;}
-button{cursor: pointer;}
-button::-moz-focus-inner {padding:0;border:0;}
-a{color: inherit;}
-a, a:visited, a:hover{text-decoration: none;}
-ul li{list-style: none;}
-img{max-width: 100%;}
+input::-ms-clear {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+a {
+  color: inherit;
+}
+a,
+a:visited,
+a:hover {
+  text-decoration: none;
+}
+ul li {
+  list-style: none;
+}
+img {
+  max-width: 100%;
+}
 
-h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
 
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -79,6 +138,18 @@ body {
 
   &__current-page {
     color: rgb(0, 0, 0);
+  }
+}
+
+.navigation {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  
+  &__list {
+  }
+
+  &__li {
   }
 }
 </style>
