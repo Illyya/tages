@@ -4,13 +4,13 @@
 
 <script>
 export default {
-  name: 'AppTitleH3',
+  name: "AppTitleH3",
   props: {
     name: {
-      type: String
-    }
-  }
-}
+      type: String,
+    },
+  },
+};
 </script>
 
 <style lang="scss">

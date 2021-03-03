@@ -142,11 +142,13 @@ body {
 }
 
 .navigation {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+
   &__list {
+    display: flex;
+    flex-wrap: wrap;
   }
 
   &__li {

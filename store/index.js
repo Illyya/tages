@@ -120,12 +120,12 @@ export const state = () => ({
 })
 
 export const getters = {
-  items: state => {    
+  items: state => {
     return state.items;
   },
   filterByMaterial: state => id => {
     return state.items.filter(item => item.material == id);
-  },  
+  },
 }
 
 export const mutations = {
@@ -134,14 +134,14 @@ export const mutations = {
 
       return state.items.sort((a, b) => {
 
-        return a.price.current_price - b.price.current_price;        
+        return a.price.current_price - b.price.current_price;
       })
     }
     if (sortBy == 'descending-price') {
 
       return state.items.sort((a, b) => {
 
-        return b.price.current_price - a.price.current_price;        
+        return b.price.current_price - a.price.current_price;
       })
     }
   },
@@ -150,8 +150,8 @@ export const mutations = {
       if (item.id == id) {
         Vue.set(item, "inTheBasket", true);
         state.basket.push(item);
-        localStorage.setItem('basket', JSON.stringify(state.basket));    
-      } 
+        localStorage.setItem('basket', JSON.stringify(state.basket));
+      }
     });
     localStorage.setItem('items', JSON.stringify(state.items));
   },
@@ -172,11 +172,11 @@ export const mutations = {
           Vue.set(item, "inTheFavorites", false);
           state.favorites.splice(state.favorites.indexOf(item), 1);
           localStorage.setItem('favorites', JSON.stringify(state.favorites));
-          return  
+          return
         }
         Vue.set(item, "inTheFavorites", true);
         state.favorites.push(item);
-        localStorage.setItem('favorites', JSON.stringify(state.favorites));  
+        localStorage.setItem('favorites', JSON.stringify(state.favorites));
       }
     });
     localStorage.setItem('items', JSON.stringify(state.items));
