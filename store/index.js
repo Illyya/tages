@@ -126,6 +126,9 @@ export const getters = {
   filterByMaterial: state => id => {
     return state.items.filter(item => item.material == id);
   },
+  basket: state => {
+    return state.basket;
+  }
 }
 
 export const mutations = {
