@@ -8,7 +8,7 @@
     />
 
     <p class="basket-of-goods__total-cost-basket">
-      Итого: {{ totalCostBasket }}
+      Итого: {{ totalCostBasket }}₽
     </p>
   </div>
 </template>
@@ -42,6 +42,10 @@ export default {
 
   &__product-in-basket {
     margin: 10px;
+
+    &:last-of-type {
+      margin-bottom: 50px;
+    }
   }
 
   &__total-cost-basket {
