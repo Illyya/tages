@@ -60,8 +60,8 @@
         :discount="cart.price.old_price"
         :srcImgWebp="cart.image.srcImgWebp"
         :srcImgPng="cart.image.srcImgPng"
-        @toBasket="toBasket(cart.id)"
-        @fromTheBasket="fromTheBasket(cart.id)"
+        @addToBasket="addToBasket(cart.id)"
+        @deleteFromBasket="deleteFromBasket(cart.id)"
         @toFromFavorites="toFromFavorites(cart.id)"
         class="product-list__card-product"
       />
@@ -221,11 +221,11 @@ export default Vue.extend({
     sortByPrice() {
       this.$store.commit("sortByPrice", this.valueSortByPrice);
     },
-    toBasket(id: string) {
-      this.$store.commit("toBasket", id);
+    addToBasket(id: string) {
+      this.$store.commit("addToBasket", id);
     },
-    fromTheBasket(id: string) {
-      this.$store.commit("fromTheBasket", id);
+    deleteFromBasket(id: string) {
+      this.$store.commit("deleteFromBasket", id);
     },
     toFromFavorites(id: string) {
       this.$store.commit("toFromFavorites", id);

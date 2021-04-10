@@ -17,12 +17,12 @@
         <div class="card-product__new-price">{{ currentPrice }}₽</div>
       </div>
       <div
-        @click="toBasket"
+        @click="addToBasket"
         v-if="!inTheBasket"
         class="card-product__to-basket"
       ></div>
       <div
-        @click="fromTheBasket"
+        @click="deleteFromBasket"
         v-else
         class="card-product__in-the-basket"
       ></div>
@@ -71,11 +71,11 @@ export default Vue.extend({
     },
   },
   methods: {
-    toBasket() {
-      this.$emit("toBasket");
+    addToBasket() {
+      this.$emit("addToBasket");
     },
-    fromTheBasket() {
-      this.$emit("fromTheBasket");
+    deleteFromBasket() {
+      this.$emit("deleteFromBasket");
     },
     toFromFavorites() {
       this.$emit("toFromFavorites");

@@ -154,7 +154,7 @@ export const mutations = {
       })
     }
   },
-  toBasket: (state, id) => {
+  addToBasket: (state, id) => {
     state.items.find(item => {
       if (item.id == id) {
         Vue.set(item, "inTheBasket", true);
@@ -164,7 +164,7 @@ export const mutations = {
     });
     localStorage.setItem('items', JSON.stringify(state.items));
   },
-  fromTheBasket: (state, id) => {
+  deleteFromBasket: (state, id) => {
     state.items.find(item => {
       if (item.id == id && item.inTheBasket == true) {
         Vue.set(item, "inTheBasket", false);

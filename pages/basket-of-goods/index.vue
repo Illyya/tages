@@ -8,7 +8,7 @@
     />
 
     <p class="basket-of-goods__total-cost-basket">
-      Итого: {{ totalCostBasket }}₽
+      Итого: {{ totalCostBasket }} ₽
     </p>
   </div>
 </template>
