@@ -131,7 +131,7 @@ export const getters = {
   },
   totalCostBasket: (state, getters) => {
     return getters.basket
-      .map(el => el.price.current_price)
+      .map(el => el.price.current_price * el.quantity)
       .reduce((acc, el) => acc + el, 0)
       .toFixed(2)
   }
@@ -158,20 +158,29 @@ export const mutations = {
     state.items.find(item => {
       if (item.id == id) {
         Vue.set(item, "inTheBasket", true);
+        Vue.set(item, "quantity", 1);
+
         state.basket.push(item);
+
         localStorage.setItem('basket', JSON.stringify(state.basket));
       }
     });
+
     localStorage.setItem('items', JSON.stringify(state.items));
   },
   deleteFromBasket: (state, id) => {
     state.items.find(item => {
       if (item.id == id && item.inTheBasket == true) {
-        Vue.set(item, "inTheBasket", false);
+        item.inTheBasket = false;
+
+        delete item.quantity;
+
         state.basket.splice(state.basket.indexOf(item), 1);
+
         localStorage.setItem('basket', JSON.stringify(state.basket));
       }
     })
+
     localStorage.setItem('items', JSON.stringify(state.items));
   },
   toFromFavorites: (state, id) => {
@@ -188,6 +197,18 @@ export const mutations = {
         localStorage.setItem('favorites', JSON.stringify(state.favorites));
       }
     });
+    localStorage.setItem('items', JSON.stringify(state.items));
+  },
+  quantityMore: (state, id) => {
+    state.basket.find(el => el.id == id ? el.quantity++ : null);
+
+    localStorage.setItem('basket', JSON.stringify(state.basket));
+    localStorage.setItem('items', JSON.stringify(state.items));
+  },
+  quantityLess: (state, id) => {
+    state.basket.find(el => el.id == id ? el.quantity-- : null);
+
+    localStorage.setItem('basket', JSON.stringify(state.basket));
     localStorage.setItem('items', JSON.stringify(state.items));
   },
   dataFromLocalStorage: state => {

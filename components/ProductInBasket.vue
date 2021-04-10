@@ -23,9 +23,22 @@
     </div>
 
     <div class="product-in-basket__quantity">
-      <button class="product-in-basket__quantity-less">&lsaquo;</button>
-      <p class="product-in-basket__quantity-number">1</p>
-      <button class="product-in-basket__quantity-more">&rsaquo;</button>
+      <button
+        @click="quantityLess(product.id)"
+        :disabled="product.quantity <= 1"
+        class="product-in-basket__quantity-less"
+      >
+        &lsaquo;
+      </button>
+
+      <p class="product-in-basket__quantity-number">{{ product.quantity }}</p>
+
+      <button
+        @click="quantityMore(product.id)"
+        class="product-in-basket__quantity-more"
+      >
+        &rsaquo;
+      </button>
     </div>
   </div>
 </template>
@@ -36,6 +49,14 @@ export default {
   props: {
     product: {
       type: Object,
+    },
+  },
+  methods: {
+    quantityMore(id) {
+      this.$store.commit("quantityMore", id);
+    },
+    quantityLess(id) {
+      this.$store.commit("quantityLess", id);
     },
   },
 };
