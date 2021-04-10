@@ -128,6 +128,12 @@ export const getters = {
   },
   basket: state => {
     return state.basket;
+  },
+  totalCostBasket: (state, getters) => {
+    return getters.basket
+      .map(el => el.price.current_price)
+      .reduce((acc, el) => acc + el, 0)
+      .toFixed(2)
   }
 }
 

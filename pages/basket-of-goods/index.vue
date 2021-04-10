@@ -6,6 +6,10 @@
       :product="product"
       class="basket-of-goods__product-in-basket"
     />
+
+    <p class="basket-of-goods__total-cost-basket">
+      Итого: {{ totalCostBasket }}
+    </p>
   </div>
 </template>
 
@@ -23,6 +27,9 @@ export default {
     products() {
       return this.$store.getters.basket;
     },
+    totalCostBasket() {
+      return this.$store.getters.totalCostBasket;
+    },
   },
 };
 </script>
@@ -30,11 +37,17 @@ export default {
 <style lang="scss">
 .basket-of-goods {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
 
   &__product-in-basket {
     margin: 10px;
+  }
+
+  &__total-cost-basket {
+    font-weight: 900;
+    font-size: 2rem;
+    color: rgb(64, 64, 250);
   }
 }
 </style>
